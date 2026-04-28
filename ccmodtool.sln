@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCModTool.Analyzers", "CCMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCModTool.Abstractions", "CCModTool.Abstractions\CCModTool.Abstractions.csproj", "{6B683C73-E25A-44FB-BED0-7D16D0021A00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCModTool.Diagnostics", "CCModTool.Diagnostics\CCModTool.Diagnostics.csproj", "{955CE8F3-36D5-469D-A5C4-B95736B2D335}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCModTool.Generators", "CCModTool.Generators\CCModTool.Generators.csproj", "{AC0F1C75-6994-4500-834B-FCAD7355738B}"
 EndProject
 Global
@@ -40,10 +38,6 @@ Global
 		{6B683C73-E25A-44FB-BED0-7D16D0021A00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B683C73-E25A-44FB-BED0-7D16D0021A00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B683C73-E25A-44FB-BED0-7D16D0021A00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{955CE8F3-36D5-469D-A5C4-B95736B2D335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{955CE8F3-36D5-469D-A5C4-B95736B2D335}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{955CE8F3-36D5-469D-A5C4-B95736B2D335}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{955CE8F3-36D5-469D-A5C4-B95736B2D335}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC0F1C75-6994-4500-834B-FCAD7355738B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC0F1C75-6994-4500-834B-FCAD7355738B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC0F1C75-6994-4500-834B-FCAD7355738B}.Release|Any CPU.ActiveCfg = Release|Any CPU

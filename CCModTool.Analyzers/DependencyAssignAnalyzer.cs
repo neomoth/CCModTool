@@ -2,7 +2,6 @@ using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.CodeAnalysis.Operations;
-using static CCModTool.Diagnostics.Diagnostics;
 
 namespace CCModTool.Analyzers;
 
@@ -11,7 +10,14 @@ public sealed class DependencyAssignAnalyzer : DiagnosticAnalyzer
 {
 	private const string DependencyAttributeType = "CCModTool.Abstractions.IoC.DependencyAttribute";
 
-	private static readonly DiagnosticDescriptor Rule = Rules["CC0001"];
+	private static readonly DiagnosticDescriptor Rule = new(
+		"CC0001",
+		"Assignment to dependency field",
+		"Tried to assign to [Dependency] field '{0}'. Remove [Dependency] or inject it via field injection instead.",
+		"Usage",
+		DiagnosticSeverity.Warning,
+		true
+	);
 
 	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
 

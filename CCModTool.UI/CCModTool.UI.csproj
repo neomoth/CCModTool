@@ -8,6 +8,7 @@
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -29,12 +30,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\CCModTool.Downloader\CCModTool.Downloader.csproj" />
-	  <ProjectReference Include="..\CCModTool.Generators\CCModTool.Generators.csproj" />
-	  <ProjectReference Include="..\CCModTool.Logging\CCModTool.Logging.csproj" />
+		<ProjectReference Include="..\CCModTool.Downloader\CCModTool.Downloader.csproj" />
+		<ProjectReference Include="..\CCModTool.Logging\CCModTool.Logging.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\CCModTool.Generators\CCModTool.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
 		<ProjectReference Include="..\CCModTool.Analyzers\CCModTool.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
 	</ItemGroup>
 

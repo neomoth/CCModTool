@@ -5,7 +5,7 @@ using Avalonia.VisualTree;
 
 namespace CCModTool.UI.App.Behaviors;
 
-public class ScrollBehavior
+public sealed class ScrollBehavior
 {
 	public static readonly AttachedProperty<bool> EnableScrollWheelOnScrollBarProperty =
 		AvaloniaProperty.RegisterAttached<ScrollBehavior, Control, bool>(

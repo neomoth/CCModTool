@@ -3,7 +3,6 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
-using static CCModTool.Diagnostics.Diagnostics;
 
 namespace CCModTool.Analyzers;
 
@@ -17,7 +16,14 @@ public sealed class DuplicateDependencyAnalyzer : DiagnosticAnalyzer
 {
     private const string DependencyAttributeType = "CCModTool.Abstractions.IoC.DependencyAttribute";
 
-    private static readonly DiagnosticDescriptor Rule = Rules["CC0002"];
+    private static readonly DiagnosticDescriptor Rule = new(
+	    "CC0002",
+	    "Duplicate dependency field",
+	    "Another [Dependency] field of type '{0}' already exists in this type with field '{1}'",
+	    "Usage",
+	    DiagnosticSeverity.Warning,
+	    true
+    );
 
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
 

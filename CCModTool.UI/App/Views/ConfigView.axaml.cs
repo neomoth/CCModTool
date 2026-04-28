@@ -13,7 +13,7 @@ using CCModTool.UI.App.Config;
 
 namespace CCModTool.UI.App.Views;
 
-public partial class ConfigView : UserControl
+public sealed partial class ConfigView : UserControl
 {
 	[Dependency] private readonly ConfigManager _cfg = null!;
 	

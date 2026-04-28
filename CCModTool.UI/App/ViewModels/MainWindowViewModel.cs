@@ -15,8 +15,8 @@ public sealed partial class MainWindowViewModel : ViewModelBase
 
 	private readonly InstallViewModel _installPage = new();
 	private readonly ConfigViewModel _configPage = new();
-	
-	public Grid MainContentGrid { get; set; }
+
+	public Grid MainContentGrid { get; set; } = null!;
 
 	public MainWindowViewModel()
 	{

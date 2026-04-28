@@ -29,8 +29,4 @@
 		</Compile>
 		<Compile Remove="../CCModTool.Roslyn.Shared/obj/**/*.cs"/>
 	</ItemGroup>
-
-	<ItemGroup>
-	  	<ProjectReference Include="..\CCModTool.Diagnostics\CCModTool.Diagnostics.csproj" OutputItemType="Analyzer"/>
-	</ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ using CCModTool.UI.Extensions;
 
 namespace CCModTool.UI.App;
 
-public class App
+public sealed class App
 {
 	[Dependency] private readonly ILogManager _log = null!;
 	public static ISawmill Log { get; private set; } = null!;

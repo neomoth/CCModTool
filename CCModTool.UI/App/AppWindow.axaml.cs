@@ -8,7 +8,7 @@ using CCModTool.UI.App.Views;
 
 namespace CCModTool.UI.App;
 
-public partial class AppWindow : Application
+public sealed class AppWindow : Application
 {
 	public override void Initialize()
 	{

@@ -10,7 +10,7 @@ using CCModTool.UI.App.ViewModels;
 
 namespace CCModTool.UI.App.Views;
 
-public partial class MainWindow : Window
+public sealed partial class MainWindow : Window
 {
 	private Button? selectedButton;
 	

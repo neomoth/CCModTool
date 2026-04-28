@@ -1,14 +1,20 @@
 using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
-using static CCModTool.Diagnostics.Diagnostics;
 
 namespace CCModTool.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class MissingConfigPropertyAnalyzer : DiagnosticAnalyzer
 {
-	private static readonly DiagnosticDescriptor Rule = Rules["CC0004"];
+	private static readonly DiagnosticDescriptor Rule = new(
+		"CC0004",
+		"Missing ConfigProp attribute",
+		"Property '{0}' must have [ConfigProp] attribute",
+		"Usage",
+		DiagnosticSeverity.Error,
+		true
+	);
     
     public override void Initialize(AnalysisContext context)
     {
