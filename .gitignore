@@ -3,3 +3,13 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# Rider
+.idea
+.sln.iml
+.editorconfig
+
+# ReSharper
+_ReSharper*/
+*[Rr]e[Ss]harper
+*.DotSettings.User

@@ -30,6 +30,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\CCModTool.Downloader\CCModTool.Downloader.csproj" />
+	  <ProjectReference Include="..\CCModTool.Generators\CCModTool.Generators.csproj" />
 	  <ProjectReference Include="..\CCModTool.Logging\CCModTool.Logging.csproj" />
 	</ItemGroup>
 

@@ -1,19 +1,14 @@
 using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static CCModTool.Diagnostics.Diagnostics;
 
 namespace CCModTool.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class PathPropUsageAnalyzer : DiagnosticAnalyzer
 {
-	private static readonly DiagnosticDescriptor Rule = new(
-		id: Diagnostics.IdPathPropertyMustBeString,
-		title: "Invalid use of PathProp",
-		messageFormat: "[PathProp] can only be applied to string properties with [ConfigProp]",
-		category: "Usage",
-		defaultSeverity: DiagnosticSeverity.Error,
-		isEnabledByDefault: true);
+	private static readonly DiagnosticDescriptor Rule = Rules["CC0003"];
 
 	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
 

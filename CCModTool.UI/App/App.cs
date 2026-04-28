@@ -9,7 +9,7 @@ namespace CCModTool.UI.App;
 public class App
 {
 	[Dependency] private readonly ILogManager _log = null!;
-	public static ISawmill Log { get; private set; }
+	public static ISawmill Log { get; private set; } = null!;
 
 	public void Run(string[] args)
 	{
@@ -18,8 +18,8 @@ public class App
 		Log.Debug("App started.");
 		BuildApp(_log).StartWithClassicDesktopLifetime(args);
 	}
-	
-	public static AppBuilder BuildApp(ILogManager log)
+
+	private static AppBuilder BuildApp(ILogManager log)
 	{
 		var logLevel = IoCManager.Resolve<ConfigManager>().Get<AppConfig>().AvaloniaLogDebug
 			? LogLevel.Debug

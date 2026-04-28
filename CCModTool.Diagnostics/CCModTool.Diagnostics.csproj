@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>12</LangVersion>
+		<PolySharpGeneratedTypes>System.Runtime.CompilerServices.IsExternalInit</PolySharpGeneratedTypes>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  	<Reference Include="Microsoft.CodeAnalysis">
+	    	<HintPath>..\..\..\.nuget\packages\microsoft.codeanalysis.common\5.3.0\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+	  	</Reference>
+		
+		<PackageReference Include="PolySharp" Version="1.15.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+</Project>
