@@ -1,0 +1,70 @@
+<Application xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="CCModTool.UI.App.AppWindow"
+        xmlns:app="clr-namespace:CCModTool.UI.App"
+        RequestedThemeVariant="Dark">
+	
+	<Application.DataTemplates>
+		<app:ViewLocator/>
+	</Application.DataTemplates>
+	
+	<Application.Resources>
+		<!--app colors-->
+		<Color x:Key="BackPanelColor">#1b1b1f</Color>
+		<Color x:Key="PanelColor">#222225</Color>
+		<Color x:Key="PanelButtonColor">#262629</Color>
+		<Color x:Key="PanelButtonHoverColor">#29292c</Color>
+		<Color x:Key="PanelButtonPressedColor">#323235</Color>
+		<Color x:Key="ScrollThumbColor">#4a4a4a</Color>
+		<Color x:Key="ScrollThumbHoverColor">#5e5e5e</Color>
+		<Color x:Key="ScrollThumbPressedColor">#525252</Color>
+	</Application.Resources>
+	
+	<Application.Styles>
+		<FluentTheme/>
+
+		<Style Selector="Button.TitlebarButton">
+	        <Setter Property="CornerRadius" Value="0"/>
+	        <Setter Property="RenderTransform" Value="none"/>
+        </Style>
+        <Style Selector="Button.SidebarButton">
+	        <Setter Property="CornerRadius" Value="0"/>
+	        <Setter Property="RenderTransform" Value="none"/>
+	        <Setter Property="BorderThickness" Value="0"/>
+	        <Setter Property="Background" Value="#222225"/>
+	        <Style Selector="^:pointerover /template/ContentPresenter">
+		        <Setter Property="Background" Value="#323235"/>
+	        </Style>
+	        <Style Selector="^:pressed /template/ContentPresenter">
+		        <Setter Property="Background" Value="#29292c"/>
+	        </Style>
+	        <Style Selector="^.Selected">
+		        <Setter Property="Background" Value="#323235"/>
+	        </Style>
+        </Style>
+        
+        <Style Selector="Button.PanelButton">
+	        <Setter Property="CornerRadius" Value="6"/>
+	        <Setter Property="RenderTransform" Value="none"/>
+	        <Setter Property="BorderThickness" Value="0"/>
+	        <Setter Property="Background" Value="{StaticResource PanelButtonColor}"/>
+	        <Style Selector="^:pointerover /template/ContentPresenter">
+		        <Setter Property="Background" Value="{StaticResource PanelButtonHoverColor}"/>
+	        </Style>
+	        <Style Selector="^:pressed /template/ContentPresenter">
+		        <Setter Property="Background" Value="{StaticResource PanelButtonPressedColor}"/>
+	        </Style>
+        </Style>
+        
+        <Style Selector="Separator">
+	        <Setter Property="Margin" Value="0 4 0 4"/>
+        </Style>
+        
+        <Style Selector="Separator.SidePanel">
+	        <Setter Property="Margin" Value="10 4 10 4"/>
+        </Style>
+		
+		<StyleInclude Source="/App/Icons.axaml"></StyleInclude>
+		<StyleInclude Source="/App/ScrollView.axaml"></StyleInclude>
+	</Application.Styles>
+</Application>

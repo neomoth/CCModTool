@@ -1,0 +1,125 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:behaviors="clr-namespace:CCModTool.UI.App.Behaviors"
+        xmlns:converters="clr-namespace:CCModTool.UI.App.Converters"
+        x:CompileBindings="False">
+    <Styles.Resources>
+        <converters:ScrollVisibilityConverter x:Key="ScrollVisibilityConverter"></converters:ScrollVisibilityConverter>
+    </Styles.Resources>
+
+    <Style Selector="ScrollViewer">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="* Auto">
+                    <ScrollContentPresenter Background="Transparent"
+                                           Name="PART_ScrollContentPresenter"
+                                           Padding="{Binding #PART_VerticalScrollBar.IsVisible, Converter={StaticResource ScrollVisibilityConverter}}"/>
+                    <ScrollBar Grid.Column="0" Name="PART_HorizontalScrollBar" Orientation="Horizontal"/>
+                    <!-- <ScrollBar Name="PART_VerticalScrollBar" -->
+                    <!--            HorizontalAlignment="Right" -->
+                    <!--            AllowAutoHide="False" -->
+                    <!--            Orientation="Vertical" -->
+                    <!--            SmallChange="20" -->
+                    <!--            LargeChange="120"> -->
+                    <!--     <ScrollBar.Styles> -->
+                    <!--         <Style Selector="ScrollBar:vertical"> -->
+                    <!--             <Setter Property="behaviors:ScrollBehavior.EnableScrollWheelOnScrollBar" Value="True"/> -->
+                    <!--             <Setter Property="Template"> -->
+                    <!--                 <ControlTemplate> -->
+                    <!--                     <Grid HorizontalAlignment="Right"> -->
+                    <!--                         <Border Width="8" -->
+                    <!--                                 Background="{DynamicResource PanelColor}" -->
+                    <!--                                 BorderBrush="{DynamicResource PanelColor}"> -->
+                    <!--                             <Grid> -->
+	                   <!--                              <Track Name="PART_Track" -->
+	                   <!--                                     Minimum="{Binding Minimum, RelativeSource={RelativeSource TemplatedParent}}" -->
+	                   <!--                                     Maximum="{Binding Maximum, RelativeSource={RelativeSource TemplatedParent}}" -->
+	                   <!--                                     Value="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" -->
+	                   <!--                                     ViewportSize="{Binding ViewportSize, RelativeSource={RelativeSource TemplatedParent}}" -->
+	                   <!--                                     Orientation="{Binding Orientation, RelativeSource={RelativeSource TemplatedParent}}" -->
+	                   <!--                                     IsDirectionReversed="True"> -->
+                    <!-- -->
+		                  <!--                               <Track.Thumb> -->
+			                 <!--                                <Thumb MinHeight="40"> -->
+				                <!--                                 <Thumb.Template> -->
+					               <!--                                  <ControlTemplate> -->
+						              <!--                                   <Border Background="{DynamicResource ScrollThumbColor}" /> -->
+					               <!--                                  </ControlTemplate> -->
+				                <!--                                 </Thumb.Template> -->
+                    <!-- -->
+				                <!--                                 <Thumb.Styles> -->
+					               <!--                                  <Style Selector="Thumb:pointerover /template/ Border"> -->
+						              <!--                                   <Setter Property="Background" -->
+								            <!--                                     Value="{DynamicResource ScrollThumbHoverColor}" /> -->
+					               <!--                                  </Style> -->
+                    <!-- -->
+					               <!--                                  <Style Selector="Thumb:pressed /template/ Border"> -->
+						              <!--                                   <Setter Property="Background" -->
+								            <!--                                     Value="{DynamicResource ScrollThumbPressedColor}" /> -->
+					               <!--                                  </Style> -->
+				                <!--                                 </Thumb.Styles> -->
+			                 <!--                                </Thumb> -->
+		                  <!--                               </Track.Thumb> -->
+	                   <!--                              </Track> -->
+                    <!--                             </Grid> -->
+                    <!--                         </Border> -->
+                    <!--                     </Grid> -->
+                    <!--                 </ControlTemplate> -->
+                    <!--             </Setter> -->
+                    <!--         </Style> -->
+                    <!--     </ScrollBar.Styles> -->
+                    <!-- </ScrollBar> -->
+                    <ScrollBar Name="PART_VerticalScrollBar"
+                               Grid.Column="1"
+                               Width="8"
+                               MinWidth="8"
+                               MaxWidth="8"
+                               HorizontalAlignment="Right"
+                               AllowAutoHide="False"
+                               Orientation="Vertical"
+                               SmallChange="20"
+                               LargeChange="120">
+
+	                    <ScrollBar.Styles>
+
+		                    <!-- Hide buttons safely -->
+		                    <Style Selector="RepeatButton">
+			                    <Setter Property="IsVisible" Value="False"/>
+		                    </Style>
+
+		                    <!-- 🔥 THIS is the real thickness control -->
+		                    <Style Selector="Track">
+			                    <Setter Property="Width" Value="8"/>
+			                    <Setter Property="MinWidth" Value="8"/>
+			                    <Setter Property="MaxWidth" Value="8"/>
+		                    </Style>
+
+		                    <!-- Thumb styling only -->
+		                    <Style Selector="Thumb">
+			                    <Setter Property="MinHeight" Value="40"/>
+			                    <Setter Property="Width" Value="8"/>
+			                    <Setter Property="Template">
+				                    <ControlTemplate>
+					                    <Border Background="{DynamicResource ScrollThumbColor}"
+					                            CornerRadius="0"/>
+				                    </ControlTemplate>
+			                    </Setter>
+		                    </Style>
+
+		                    <Style Selector="Thumb:pointerover /template/ Border">
+			                    <Setter Property="Background"
+			                            Value="{DynamicResource ScrollThumbHoverColor}"/>
+		                    </Style>
+
+		                    <Style Selector="Thumb:pressed /template/ Border">
+			                    <Setter Property="Background"
+			                            Value="{DynamicResource ScrollThumbPressedColor}"/>
+		                    </Style>
+
+	                    </ScrollBar.Styles>
+                    </ScrollBar>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

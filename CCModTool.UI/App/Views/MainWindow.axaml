@@ -1,0 +1,234 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CCModTool.UI.App.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="clr-namespace:CCModTool.UI.App.Behaviors"
+        xmlns:svg="clr-namespace:Avalonia.Svg.Skia;assembly=Avalonia.Svg.Skia"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="CCModTool.UI.App.Views.MainWindow"
+        xmlns:conv="clr-namespace:CCModTool.UI.App.Converters"
+        x:DataType="vm:MainWindowViewModel"
+        Title="CrossCode Mod Tool"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        WindowDecorations="None"
+        Background="Transparent"
+        MinWidth="960"
+        MinHeight="540"
+        x:CompileBindings="False">
+	
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	
+	<Window.Resources>
+		<conv:BoolToCornerRadiusConverter x:Key="BoolToCornerRadiusConverter"/>
+	</Window.Resources>
+	
+	<Grid>
+		<Panel Name="ContentPadding" Margin="3" Background="Transparent">
+			<Border Name="MainBorder" CornerRadius="6" Background="#1c1c1c" ClipToBounds="True">
+				<DockPanel>
+					<Border DockPanel.Dock="Top" Background="#1c1c1c">
+						<Panel Height="24" HorizontalAlignment="Stretch">
+							<Panel Name="WindowTitle" HorizontalAlignment="Stretch" Background="Transparent">
+								<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+									<Svg Path="avares://CCModTool.UI/App/Assets/icon.svg" HorizontalAlignment="Left" Width="16" Height="16" Margin="5 0 0 0"/>
+									<TextBlock Name="TitleText" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5 0 0 0">
+										CrossCode Modding Tool
+									</TextBlock>
+								</StackPanel>
+							</Panel>
+							<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+								<Button Name="MinimizeButton" Classes="TitlebarButton" VerticalAlignment="Stretch" BorderThickness="0" Padding="0" Width="24" Height="24" Margin="0" Background="Transparent">
+									<PathIcon Name="MinimizeIcon" Data="{StaticResource MinimizeIcon}" Width="16" Height="10" VerticalAlignment="Bottom"></PathIcon>
+									<Button.Styles>
+										<Style Selector="Button:pointerover /template/ContentPresenter">
+											<Setter Property="Background" Value="#323232"/>
+										</Style>
+										<Style Selector="Button:pressed /template/ContentPresenter">
+											<Setter Property="Background" Value="#424242"/>
+										</Style>
+									</Button.Styles>
+								</Button>
+								<Button Name="ResizeButton" Classes="TitlebarButton" VerticalAlignment="Stretch" BorderThickness="0" Padding="0" Width="24" Height="24" Margin="0" Background="Transparent">
+									<PathIcon Name="ResizeIcon" Data="{StaticResource MaximizeIcon}" Width="16" Height="16"></PathIcon>
+									<Button.Styles>
+										<Style Selector="Button:pointerover /template/ContentPresenter">
+											<Setter Property="Background" Value="#323232"/>
+										</Style>
+										<Style Selector="Button:pressed /template/ContentPresenter">
+											<Setter Property="Background" Value="#424242"/>
+										</Style>
+									</Button.Styles>
+								</Button>
+								<Button Name="CloseButton" Classes="TitlebarButton" VerticalAlignment="Stretch" BorderThickness="0" Padding="0" Width="24" Height="24" Margin="0" Background="Transparent">
+									<PathIcon Name="CloseIcon" Data="{StaticResource CloseIcon}" Width="16" Height="16"></PathIcon>
+									<Button.Styles>
+										<Style Selector="Button:pointerover /template/ContentPresenter">
+											<Setter Property="Background" Value="#f00"/>
+										</Style>
+										<Style Selector="Button:pressed /template/ContentPresenter">
+											<Setter Property="Background" Value="#f44"/>
+										</Style>
+									</Button.Styles>
+								</Button>
+							</StackPanel>
+						</Panel>
+					</Border>
+					
+					<Border DockPanel.Dock="Left" Background="#222225">
+						
+						<Panel Width="180">
+							<StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+								<Button Name="InstallTabButton" Classes="SidebarButton" VerticalAlignment="Top" HorizontalAlignment="Stretch" Command="{Binding GoToInstall}">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock></TextBlock>
+										<TextBlock>Install</TextBlock>
+									</StackPanel>
+								</Button>
+								<Button Name="ConfigTabButton" Classes="SidebarButton" VerticalAlignment="Top" HorizontalAlignment="Stretch" Command="{Binding GoToConfig}">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock></TextBlock>
+										<TextBlock>Config</TextBlock>
+									</StackPanel>
+								</Button>
+							</StackPanel>
+						</Panel>
+					</Border>
+					
+					<Border Background="#111">
+						
+						<Grid Name="MainContentGrid">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="Auto" MinHeight="{Binding ConsoleMinHeight}"/>
+							</Grid.RowDefinitions>
+							<ContentControl Content="{Binding CurrentPage}"/>
+							
+							<GridSplitter Grid.Row="1" 
+							              Name="Splitter"
+							              HorizontalAlignment="Stretch" 
+							              ResizeDirection="Rows" 
+							              Cursor="TopSide"
+							              Height="3"
+							              Margin="30 0 30 3"
+							              CornerRadius="2"
+							              MinHeight="0"
+							              Background="{DynamicResource ScrollThumbColor}"
+							              IsVisible="{Binding IsConsoleExpanded}">
+								<GridSplitter.Styles>
+									<Style Selector="GridSplitter:pointerover /template/ Border">
+										<Setter Property="Background"
+										        Value="{DynamicResource ScrollThumbHoverColor}"/>
+									</Style>
+
+									<Style Selector="GridSplitter:pressed /template/ Border">
+										<Setter Property="Background"
+										        Value="{DynamicResource ScrollThumbPressedColor}"/>
+									</Style>
+								</GridSplitter.Styles>
+							</GridSplitter>
+							
+							<Border Name="StatusPanel"
+								Grid.Row="2"
+								Background="#323235">
+
+								<Grid RowDefinitions="20,*">
+									<!-- HEADER -->
+									<Grid Grid.Row="0" ColumnDefinitions="Auto Auto * Auto">
+										<ProgressBar Minimum="0"
+										             Maximum="100"
+										             Grid.Column="1"
+										             Grid.ColumnSpan="2"
+										             Value="100">
+											<ProgressBar.Styles>
+												<Style Selector="ProgressBar">
+													<Setter Property="Template">
+														<ControlTemplate>
+															<Panel>
+																<Border x:Name="PART_Track" Background="#323235" Height="20"/>
+																<Border x:Name="PART_Indicator" Background="#55d"
+																        HorizontalAlignment="Left"
+																        Height="100"/>
+															</Panel>
+														</ControlTemplate>
+													</Setter>
+												</Style>
+											</ProgressBar.Styles>
+										</ProgressBar>
+										
+										<!-- Expand button -->
+										<Button Grid.Column="0"
+										        Padding="2"
+										        Classes="SidebarButton"
+										        Command="{Binding ToggleConsoleCommand}">
+											<Grid>
+												<PathIcon Width="16"
+												          Height="16"
+												          Data="{StaticResource ExpandIcon}"
+												          IsVisible="{Binding IsConsoleCollapsed}" />
+												<PathIcon Width="16"
+												          Height="16"
+												          Data="{StaticResource CollapseIcon}"
+												          IsVisible="{Binding IsConsoleExpanded}" />
+											</Grid>
+										</Button>
+										
+										<!-- Collapsed single-line text -->
+										<TextBlock Grid.Column="1"
+										           Margin="4 0 0 0"
+										           VerticalAlignment="Center"
+										           Text="{Binding LatestConsoleLine}"
+										           MaxLines="1"
+										           TextTrimming="CharacterEllipsis"
+										           IsVisible="{Binding IsConsoleCollapsed}" />
+										
+										<Button Grid.Column="3"
+										        Padding="2"
+										        Classes="SidebarButton"
+										        IsVisible="False">
+											<TextBlock FontSize="12">Cancel</TextBlock>
+										</Button>
+									</Grid>
+									
+									<!-- Expanded console -->
+									<Border Grid.Row="1"
+									        MinHeight="80"
+									        Background="#111"
+									        VerticalAlignment="Stretch"
+									        IsVisible="{Binding IsConsoleExpanded}">
+										
+										<ScrollViewer VerticalScrollBarVisibility="Auto"
+										              x:Name="ConsoleScroll"
+										              behaviors:AutoScrollBehavior.IsEnabled="True">
+											<TextBlock Margin="6"
+											           FontFamily="Consolas"
+											           Text="{Binding ConsoleOutput}"
+											           TextWrapping="Wrap"/>
+										</ScrollViewer>
+									</Border>
+								</Grid>
+							</Border>
+						</Grid>
+					</Border>
+				</DockPanel>
+			</Border>
+		</Panel>
+		
+		<!--resize anchors-->
+		<Grid Name="Resizers">
+			<Border Name="LeftResize" HorizontalAlignment="Left" Width="4" Background="Transparent" Cursor="LeftSide"/>
+			<Border Name="RightResize" HorizontalAlignment="Right" Width="4" Background="Transparent" Cursor="RightSide"/>
+			<Border Name="TopResize" VerticalAlignment="Top" Height="4" Background="Transparent" Cursor="TopSide"/>
+			<Border Name="BottomResize" VerticalAlignment="Bottom" Height="4" Background="Transparent" Cursor="BottomSide"/>
+			
+			<Border Name="TopLeftResize" HorizontalAlignment="Left" VerticalAlignment="Top" Width="4" Height="4" Background="Transparent" Cursor="TopLeftCorner"/>
+			<Border Name="TopRightResize" HorizontalAlignment="Right" VerticalAlignment="Top" Width="4" Height="4" Background="Transparent" Cursor="TopRightCorner"/>
+			<Border Name="BottomLeftResize" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="4" Height="4" Background="Transparent" Cursor="BottomLeftCorner"/>
+			<Border Name="BottomRightResize" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="4" Height="4" Background="Transparent" Cursor="BottomRightCorner"/>
+		</Grid>
+	</Grid>
+</Window>

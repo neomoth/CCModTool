@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="App/Assets/**"/>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="Avalonia" Version="12.0.1" />
+	  <PackageReference Include="Avalonia.Desktop" Version="12.0.1" />
+	  <PackageReference Include="Avalonia.Diagnostics" Version="11.3.14">
+		  <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+		  <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+	  </PackageReference>
+	  <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.1" />
+	  <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.1" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+	  <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.5" />
+	  <PackageReference Include="System.Reactive" Version="6.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CCModTool.Downloader\CCModTool.Downloader.csproj" />
+	  <ProjectReference Include="..\CCModTool.Logging\CCModTool.Logging.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CCModTool.Analyzers\CCModTool.Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="App\Assets\" />
+	</ItemGroup>
+</Project>
